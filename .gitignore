@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# Datasets
+Raw/
+Finals/
+New_raws/
+raws_new/
+stk/
+
+# Generated outputs
+outputs/
+!samples/
+
+# Checkpoints: keep only selected baseline
+checkpoints/*
+!checkpoints/fusion_best.pt
+
+# Reports: keep only inference manifest
+reports/*
+!reports/unseen_test_manifest.csv
+
+# Temporary and backup files
+*.bak
+*.backup
+*.old
+*.tmp

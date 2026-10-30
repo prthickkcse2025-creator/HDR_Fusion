@@ -1,0 +1,49 @@
+project:
+  name: HDR_Hybrid_Fusion
+  version: 1.1
+  anchor_exposure: middle
+  native_resolution_required: true
+  allow_final_resize: false
+  quality_first: true
+dataset:
+  expected_scenes: 50
+  raw_files_per_scene: 3
+  expected_raw_files: 150
+  expected_targets: 50
+  exposures: [under, middle, over]
+  split_by_scene: true
+  initial_split: {train: 35, validation: 7, test: 8}
+raw_development:
+  linear_data: true
+  white_balance_source: middle
+  shared_white_balance: true
+  independent_auto_white_balance: false
+  independent_auto_tone: false
+alignment:
+  anchor: middle
+  warp_anchor: false
+  confidence_gating: true
+  fallback: middle
+model:
+  input_channels: 9
+  heads: [shadow_strength, highlight_strength, texture_strength]
+  output_channels_per_head: 1
+  output_range: [0.0, 1.0]
+  candidate_channels: [24, 48, 96, 160]
+  residual_blocks_per_level: 2
+inference:
+  tiled: true
+  initial_tile_size: 512
+  initial_overlap: 128
+  tile_values_are_tunable: true
+  accumulation_dtype: float32
+  require_full_pixel_coverage: true
+fusion:
+  preserve_middle_chroma: true
+  unrestricted_rgb_replacement: false
+  hallucinated_texture: false
+outputs:
+  master_format: TIFF16
+  optional_delivery_format: JPEG
+  assert_dimensions_match_middle: true
+  save_diagnostics: true
