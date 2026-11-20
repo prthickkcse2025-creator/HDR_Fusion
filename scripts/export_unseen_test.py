@@ -12,7 +12,7 @@ import train_new_dataset as training
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "raws_new"
 MANIFEST = ROOT / "reports" / "unseen_test_manifest.csv"
-CHECKPOINT = ROOT / "checkpoints" / "new_dataset_recovery" / "fusion_best.pt"
+CHECKPOINT = ROOT / "checkpoints" / "fusion_best.pt"
 OUT = ROOT / "outputs" / "unseen_test"
 REPORT = ROOT / "reports" / "unseen_test_export.json"
 
